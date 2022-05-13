@@ -1,0 +1,6 @@
+sleep.xml:sleep/sleep.out:5000
+cblas.work.xml:cblas/cblas-intel-mkl.out:sgemm:8000:8000:8000
+cblas.work.xml:cblas/cblas-intel-mkl.out:dgemm:8000:8000:8000
+lapacke.work.xml:lapacke/lapacke-intel-mkl.out:sgetrs:8000:400
+lapacke.work.xml:lapacke/lapacke-intel-mkl.out:dgetrs:8000:400
+rng.xml:rng/rng.out:1000000000:0.0:1.0
