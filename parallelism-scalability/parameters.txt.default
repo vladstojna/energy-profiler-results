@@ -1,0 +1,12 @@
+lapacke/lapacke-intel-mkl.out:spotrf:8000
+lapacke/lapacke-intel-mkl.out:dpotrf:8000
+lapacke/lapacke-intel-mkl.out:strtri:8000
+lapacke/lapacke-intel-mkl.out:dtrtri:8000
+lapacke/lapacke-intel-mkl.out:sgetri:8000
+lapacke/lapacke-intel-mkl.out:dgetri:8000
+lapacke/lapacke-intel-mkl.out:sgetrf:8000:8000
+lapacke/lapacke-intel-mkl.out:dgetrf:8000:8000
+lapacke/lapacke-intel-mkl.out:sgels:8000:8000:400
+lapacke/lapacke-intel-mkl.out:dgels:8000:8000:400
+lapacke/lapacke-intel-mkl.out:sgesv:8000:400
+lapacke/lapacke-intel-mkl.out:dgesv:8000:400
