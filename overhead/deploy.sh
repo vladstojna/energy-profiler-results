@@ -59,7 +59,7 @@ for i in $(seq $EP_REPEAT_NTIMES); do
             output="output.${params[1]//[\/]/_}.${args//[ ]/_}"
             echo "Running $replace_tag interval $x $config | $bin -q -o $outdir/$output.none.$i.json -- $sample $args"
             $replace_tag interval $x $config | \
-            $bin -q -c "$config" -o "$outdir/$output.none.$i.json" -- $sample $args \
+            $bin -q -o "$outdir/$output.none.$i.json" -- $sample $args \
                 > "$outdir/$output.none.$i.csv"
         done
     done
