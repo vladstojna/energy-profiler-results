@@ -29,8 +29,18 @@ fi
 IFS=':' read -r -a intervals <<< "$EP_CONFIG_INTERVALS"
 replace_tag="$(dirname $0)/../scripts/config_replace_tag_value.sh"
 
-mkdir -p "$(dirname $0)/plain"
-mkdir -p "$(dirname $0)/profiled"
+if [[ ! -z "$MKL_NUM_THREADS" ]]; then
+    echo "Threads: $MKL_NUM_THREADS"
+    profiled_dir="profiled_${MKL_NUM_THREADS}t"
+    plain_dir="plain_${MKL_NUM_THREADS}t"
+else
+    echo "Threads: default"
+    profiled_dir="profiled_default_threads"
+    plain_dir="plain_default_threads"
+fi
+
+mkdir -p "$(dirname $0)/$plain_dir"
+mkdir -p "$(dirname $0)/$profiled_dir"
 
 for i in $(seq $EP_REPEAT_NTIMES); do
     for l in $(cat $EP_PARAMS_FILE); do
@@ -39,7 +49,7 @@ for i in $(seq $EP_REPEAT_NTIMES); do
         args="${params[@]:2}"
         output="output.${params[1]//[\/]/_}.${args//[ ]/_}"
         echo "Running $sample $args"
-        $sample $args > "$(dirname $0)/plain/$output.$i.csv"
+        $sample $args > "$(dirname $0)/$plain_dir/$output.$i.csv"
     done
 done
 
@@ -48,7 +58,7 @@ make -C "$EP_PREFIX/nrg" gpu=GPU_NONE cpu=CPU_NONE -j
 
 for i in $(seq $EP_REPEAT_NTIMES); do
     for x in ${intervals[@]}; do
-        outdir="$(dirname $0)/profiled/$x"
+        outdir="$(dirname $0)/$profiled_dir/$x"
         mkdir -p "$outdir"
         for l in $(cat $EP_PARAMS_FILE); do
             IFS=':' read -r -a params <<< "$l"
@@ -70,7 +80,7 @@ make -C "$EP_PREFIX/nrg" gpu=GPU_NONE -j
 
 for i in $(seq $EP_REPEAT_NTIMES); do
     for x in ${intervals[@]}; do
-        outdir="$(dirname $0)/profiled/$x"
+        outdir="$(dirname $0)/$profiled_dir/$x"
         mkdir -p "$outdir"
         for l in $(cat $EP_PARAMS_FILE); do
             # sensors:
