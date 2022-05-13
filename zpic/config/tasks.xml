@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <sections label="Current">
+        <section target="cpu" label="Current Reset">
+            <bounds>
+                <func name="current_zero"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Current Reduction Y">
+            <bounds>
+                <func name="current_reduction_y"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Current Reduction X">
+            <bounds>
+                <func name="current_reduction_x"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Current Update GC">
+            <bounds>
+                <func name="current_gc_update_y"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Current Smooth X">
+            <bounds>
+                <func name="current_smooth_x"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Current Smooth Y">
+            <bounds>
+                <func name="current_smooth_y"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+    </sections>
+    <sections label="Particles">
+        <section target="cpu" label="Spec Advance">
+            <bounds>
+                <func name="spec_advance"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="Spec Merge Vectors">
+            <bounds>
+                <func name="spec_merge_vectors"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+    </sections>
+    <sections label="EMF">
+        <section target="cpu" label="EMF Advance">
+            <bounds>
+                <func name="emf_advance"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+        <section target="cpu" label="EMF Update GC">
+            <bounds>
+                <func name="emf_update_gc_y"/>
+            </bounds>
+            <method>total</method>
+            <short/>
+        </section>
+    </sections>
+</config>

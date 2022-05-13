@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <sections label="Current">
+        <section target="gpu" label="Current Reset (GPU)">
+            <bounds>
+                <func name="current_zero_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Current Reduction Y (GPU)">
+            <bounds>
+                <func name="current_reduction_y_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Current Reduction X (GPU)">
+            <bounds>
+                <func name="current_reduction_x_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Current Smooth X (GPU)">
+            <bounds>
+                <func name="current_smooth_x_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Current Update GC (GPU)">
+            <bounds>
+                <func name="current_gc_update_y_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+    </sections>
+    <sections label="Particles">
+        <section target="gpu" label="Spec Kernel (GPU)">
+            <bounds>
+                <func name="spec_advance_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Spec Check Boundaries (GPU)">
+            <bounds>
+                <func name="spec_check_boundaries_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Spec Move Window (GPU)">
+            <bounds>
+                <func name="spec_move_window_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Spec Sort (GPU)">
+            <bounds>
+                <func name="spec_sort_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Sort (GPU, Sort Particles)">
+            <bounds>
+                <func name="spec_sort_particles"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+    </sections>
+    <sections label="EMF">
+        <section target="gpu" label="EMF Advance (GPU)">
+            <bounds>
+                <func name="emf_advance_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="EMF Update GC (GPU)">
+            <bounds>
+                <func name="emf_update_gc_y_openacc"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+    </sections>
+    <sections label="Histogram">
+        <section target="gpu" label="Sort (GPU, Histogram NP)">
+            <bounds>
+                <func name="histogram_np_per_tile"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+        <section target="gpu" label="Sort (GPU, Histogram Leaving Part)">
+            <bounds>
+                <func name="histogram_moving_particles"/>
+            </bounds>
+            <allow_concurrency/>
+            <short/>
+        </section>
+    </sections>
+</config>
