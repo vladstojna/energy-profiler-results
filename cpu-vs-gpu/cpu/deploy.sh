@@ -39,9 +39,9 @@ for l in $(cat $EP_PARAMS_FILE); do
     args="${params[@]:1}"
     output="output.${params[0]//[\/]/_}.${args//[ ]/_}"
     echo "Running $bin -q --cpu-sensors b -c $config -o $outdir/$output.0xb.json -- $sample $args"
-    # $bin -q --cpu-sensors "b" -c "$config" -o "$outdir/$output.0xb.json" \
-    #     -- $sample $args \
-    #     > "$outdir/$output.0xb.csv"
+    $bin -q --cpu-sensors "b" -c "$config" -o "$outdir/$output.0xb.json" \
+        -- $sample $args \
+        > "$outdir/$output.0xb.csv"
 done
 
 outdir="${outdir}_noop"
@@ -57,7 +57,7 @@ for l in $(cat $EP_PARAMS_FILE); do
     args="${params[@]:1}"
     output="output.${params[0]//[\/]/_}.${args//[ ]/_}"
     echo "Running $bin -q --cpu-sensors b -c $config -o $outdir/$output.0xb.json -- $sample $args"
-    # $bin -q --cpu-sensors "b" -c "$config" -o "$outdir/$output.0xb.json" \
-    #     -- $sample $args \
-    #     > "$outdir/$output.0xb.csv"
+    $bin -q --cpu-sensors "b" -c "$config" -o "$outdir/$output.0xb.json" \
+        -- $sample $args \
+        > "$outdir/$output.0xb.csv"
 done
