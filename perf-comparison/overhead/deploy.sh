@@ -73,9 +73,11 @@ for i in $(seq $EP_REPEAT_NTIMES); do
             args="${params[@]:2}"
             output="output.${params[1]//[\/]/_}.${args//[ ]/_}"
 
-            echo "Running $perf stat -a -x ',' -e $event_pkg -e $event_cores -e $event_ram -I $x -o $outdir/main/$output.perf.0xb.csv -- $sample $args"
+            echo "Running $perf stat -a -x ',' -e $event_pkg -e $event_cores -e $event_ram -I $x -o $outdir/$output.perf.0xb.$i.csv -- $sample $args"
             $perf stat -a -x ',' -e "$event_pkg" -e "$event_cores" -e "$event_ram" -I $x \
-                -o "$outdir/main/$output.perf.0xb.csv" -- $sample $args
+                -o "$outdir/$output.perf.0xb.$i.csv" \
+                -- $sample $args \
+                > "$outdir/$output.perf.0xb.$i.app.csv"
 
             echo "Running $replace_tag interval $x $config | $bin -q --cpu-sensors b -o $outdir/$output.0xb.$i.json -- $sample $args"
             $replace_tag interval "$x" "$config" | \
