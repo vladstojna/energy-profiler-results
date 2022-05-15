@@ -28,6 +28,7 @@ fi
 
 IFS=':' read -r -a intervals <<< "$EP_CONFIG_INTERVALS"
 replace_tag="$(dirname $0)/../../scripts/config_replace_tag_value.sh"
+config="$(dirname $0)/config/main.xml"
 
 export LC_ALL='C'
 perf=perf
@@ -51,9 +52,9 @@ mkdir -p "$(dirname $0)/$profiled_dir"
 for i in $(seq $EP_REPEAT_NTIMES); do
     for l in $(cat $EP_PARAMS_FILE); do
         IFS=':' read -r -a params <<< "$l"
-        sample="$EP_EVAL_PREFIX/${params[1]}"
-        args="${params[@]:2}"
-        output="output.${params[1]//[\/]/_}.${args//[ ]/_}"
+        sample="$EP_EVAL_PREFIX/${params[0]}"
+        args="${params[@]:1}"
+        output="output.${params[0]//[\/]/_}.${args//[ ]/_}"
         echo "Running $sample $args"
         $sample $args > "$(dirname $0)/$plain_dir/$output.$i.csv"
     done
@@ -68,10 +69,9 @@ for i in $(seq $EP_REPEAT_NTIMES); do
             # package + cores + dram
             IFS=':' read -r -a params <<< "$l"
             bin="$EP_PREFIX/bin/profiler"
-            config="$EP_EVAL_PREFIX/profiler-config/${params[0]}"
-            sample="$EP_EVAL_PREFIX/${params[1]}"
-            args="${params[@]:2}"
-            output="output.${params[1]//[\/]/_}.${args//[ ]/_}"
+            sample="$EP_EVAL_PREFIX/${params[0]}"
+            args="${params[@]:1}"
+            output="output.${params[0]//[\/]/_}.${args//[ ]/_}"
 
             echo "Running $perf stat -a -x ',' -e $event_pkg -e $event_cores -e $event_ram -I $x -o $outdir/$output.perf.0xb.$i.csv -- $sample $args"
             $perf stat -a -x ',' -e "$event_pkg" -e "$event_cores" -e "$event_ram" -I $x \
