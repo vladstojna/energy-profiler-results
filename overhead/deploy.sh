@@ -30,6 +30,8 @@ IFS=':' read -r -a intervals <<< "$EP_CONFIG_INTERVALS"
 replace_tag="$(dirname $0)/../scripts/config_replace_tag_value.sh"
 
 if [[ ! -z "$MKL_NUM_THREADS" ]]; then
+    # export OpenMP threads for when sample uses OpenMP
+    export OMP_NUM_THREADS="$MKL_NUM_THREADS"
     echo "Threads: $MKL_NUM_THREADS"
     profiled_dir="profiled_${MKL_NUM_THREADS}t"
     plain_dir="plain_${MKL_NUM_THREADS}t"

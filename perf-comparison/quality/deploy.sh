@@ -19,6 +19,8 @@ if [[ -z "$EP_PARAMS_FILE" ]]; then
 fi
 
 if [[ ! -z "$MKL_NUM_THREADS" ]]; then
+    # export OpenMP threads for when sample uses OpenMP
+    export OMP_NUM_THREADS="$MKL_NUM_THREADS"
     echo "Threads: $MKL_NUM_THREADS"
     profiled_dir="output_${MKL_NUM_THREADS}t"
 else
