@@ -10,6 +10,15 @@ function average_count
     python3 -c "lst=[float(x) for x in '$*'.split(' ')]; print(sum(lst) / len(lst))"
 }
 
+function round
+{
+    if [[ "$#" -lt 2 ]]; then
+        python3 -c "print(round($1))"
+    else
+        python3 -c "print(round($1, $2))"
+    fi
+}
+
 function get_durations
 {
     local duration=""
@@ -52,17 +61,17 @@ function count_all_profiler_samples
 
 function compute_overhead
 {
-    python3 -c "print(float($1) / float($3) * 1000 / float($2) * 100)"
+    python3 -c "print((float($1) / float($3) * 1000 / float($2) * 100) - 100)"
 }
 
 function compute_overhead_profiler
 {
-    python3 -c "print((float($1) / float($3) * 1000 + 1) / float($2) * 100)"
+    python3 -c "print(((float($1) / float($3) * 1000 + 1) / float($2) * 100) - 100)"
 }
 
 function compute_duration_overhead
 {
-    python3 -c "print(float($1) / float($2) * 100)"
+    python3 -c "print((float($1) / float($2) * 100) - 100)"
 }
 
 if [[ -z "$EP_PREFIX" ]]; then
@@ -83,19 +92,18 @@ plain_prefix=${args[0]}
 profiled_prefix=${args[1]}
 interval=${args[2]}
 
-plain_duration=$(average_count $(get_durations $plain_prefix.*.csv))
+plain_duration=$(round $(average_count $(get_durations $plain_prefix.*.csv)) 3)
 
-perf_duration=$(average_count $(get_durations $profiled_prefix.perf.0xb.*.app.csv))
-perf_samples=$(average_count $(count_all_perf_samples $profiled_prefix.perf.0xb.[0-9].csv))
+perf_duration=$(round $(average_count $(get_durations $profiled_prefix.perf.0xb.*.app.csv)) 3)
+perf_samples=$(round $(average_count $(count_all_perf_samples $profiled_prefix.perf.0xb.[0-9].csv)))
 
-profiler_duration=$(average_count $(get_durations $profiled_prefix.0xb.*.csv))
-profiler_samples=$(average_count $(count_all_profiler_samples $profiled_prefix.0xb.*.json))
+profiler_duration=$(round $(average_count $(get_durations $profiled_prefix.0xb.*.csv)) 3)
+profiler_samples=$(round $(average_count $(count_all_profiler_samples $profiled_prefix.0xb.*.json)))
 
 echo "$profiled_prefix.perf $perf_duration $perf_samples \
     $(compute_overhead $perf_duration $perf_samples $interval)"
 echo "$profiled_prefix.perf $perf_duration $plain_duration \
     $(compute_duration_overhead $perf_duration $plain_duration)"
-echo "---"
 echo "$profiled_prefix $profiler_duration $profiler_samples \
     $(compute_overhead_profiler $profiler_duration $profiler_samples $interval)"
 echo "$profiled_prefix $profiler_duration $plain_duration \
