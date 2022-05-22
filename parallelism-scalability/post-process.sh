@@ -12,7 +12,7 @@ fi
 
 args=( $@ )
 if [[ "${#args[@]}" -lt 2 ]]; then
-    echoerr "Usage: $0 <section> <field1,field2,...>"
+    echoerr "Usage: <file list> | $0 <section> <field1,field2,...>"
     exit 1
 fi
 
@@ -27,20 +27,25 @@ tmp_file=$(mktemp)
 read -r file
 $scripts/compact_total_energy.py "$file" | \
     $scripts/compact_extract.py -s "$section" | \
-    tail -2 | \
-    head -1 \
+    tail -n 2 | \
+    head -n 2 \
     > "$tmp_file"
 
+files=( "$file" )
 while read -r file;
 do
    $scripts/compact_total_energy.py "$file" | \
         $scripts/compact_extract.py -s "$section" | \
         tail -1 \
         >> "$tmp_file"
+    files+=( "$file" )
 done
+
+head -n 2 "$tmp_file" | awk '{print "#" $0}'
 
 $results_scripts/csv_column_operation2.py \
     --fields "$fields" \
     --operation div \
     --operand left \
-    "$tmp_file"
+    "$tmp_file" |
+    paste -d ',' <(echo 'threads' && seq ${#files[@]}) -
