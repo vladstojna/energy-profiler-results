@@ -29,10 +29,10 @@ def add_arguments(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
         default=None,
     )
     parser.add_argument(
-        "-e",
-        "--exclude",
+        "-f",
+        "--fields",
         action="store",
-        help="columns to exclude (default: none)",
+        help="fields to include in operation (default: none)",
         required=False,
         type=lambda x: set(x.split(",")),
         default=set(),
@@ -97,7 +97,7 @@ def main():
                     raise AssertionError("Rows must have the same number of columns")
                 newrow = {
                     k: args.operation(_int_or_float(v), _int_or_float(rr[k]))
-                    if k not in args.exclude
+                    if k in args.fields
                     else v
                     for (k, v) in rl.items()
                 }
