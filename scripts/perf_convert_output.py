@@ -3,7 +3,6 @@
 import sys
 import csv
 import argparse
-import itertools
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 
