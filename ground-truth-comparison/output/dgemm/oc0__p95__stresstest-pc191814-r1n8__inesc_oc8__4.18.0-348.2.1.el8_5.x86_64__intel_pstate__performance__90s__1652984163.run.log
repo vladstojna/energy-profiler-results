@@ -1,0 +1,6 @@
+2022-05-19 19:17:03|1652984223 [runApplication.]: Running application PID [1022817] of [/home/vlad/kaioken/data/power-characterization-tr_off/centos8/p95/oc0__p95__stresstest-pc191814-r1n8/runApplication.sh]. 
+2022-05-19 19:17:03|1652984223 [runApplication.]: Running /home/vlad/energy-profiler/bin/profiler monitored by PID [1022817]. - time to finish 90.
+2022-05-19 19:17:03|1652984223 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/dgemm.1652984223.json -- /home/vlad/energy-profiler-evaluation/cblas/cblas-intel-mkl.out dgemm 20000 20000 20000 > /home/vlad/profiler-output/dgemm.1652984223.csv].
+2022-05-19 19:17:55|1652984275 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/dgemm.1652984275.json -- /home/vlad/energy-profiler-evaluation/cblas/cblas-intel-mkl.out dgemm 20000 20000 20000 > /home/vlad/profiler-output/dgemm.1652984275.csv].
+2022-05-19 19:18:03|1652984283 [runApplication.]: is already running with PID [1022817]. Exit [1022931].
+2022-05-19 19:19:03|1652984343 [runApplication.]: script called after the experiment time at 2022-05-19 19:18:33. Exit.

@@ -1,0 +1,8 @@
+2022-05-20 14:59:03|1653055143 [runApplication.]: Running PID [1043649] of [/home/vlad/kaioken/data/power-characterization-tr_off/centos8/p95/oc0__p95__stresstest-pc201356-r1n8/runApplication.sh]. Waiting for 31s to finishing warm-up at  2022-05-20 14:59:24 +10s.
+2022-05-20 14:59:34|1653055174 [runApplication.]: Running application PID [1043649] of [/home/vlad/kaioken/data/power-characterization-tr_off/centos8/p95/oc0__p95__stresstest-pc201356-r1n8/runApplication.sh]. 
+2022-05-20 14:59:34|1653055174 [runApplication.]: Running /home/vlad/energy-profiler/bin/profiler monitored by PID [1043649]. - time to finish 90.
+2022-05-20 14:59:34|1653055174 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/dgetrs.1653055174.json -- /home/vlad/energy-profiler-evaluation/lapacke/lapacke-intel-mkl.out dgetrs 25000 10000 > /home/vlad/profiler-output/dgetrs.1653055174.csv].
+2022-05-20 15:00:04|1653055204 [runApplication.]: is already running with PID [1043649]. Exit [1043755].
+2022-05-20 15:00:58|1653055258 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/dgetrs.1653055258.json -- /home/vlad/energy-profiler-evaluation/lapacke/lapacke-intel-mkl.out dgetrs 25000 10000 > /home/vlad/profiler-output/dgetrs.1653055258.csv].
+2022-05-20 15:01:03|1653055263 [runApplication.]: is already running with PID [1043649]. Exit [1043850].
+2022-05-20 15:02:03|1653055323 [runApplication.]: script called after the experiment time at 2022-05-20 15:01:04. Exit.

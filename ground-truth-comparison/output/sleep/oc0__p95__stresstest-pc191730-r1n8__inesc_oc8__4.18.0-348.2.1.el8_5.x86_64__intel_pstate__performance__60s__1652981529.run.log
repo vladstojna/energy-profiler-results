@@ -1,0 +1,7 @@
+2022-05-19 18:33:03|1652981583 [runApplication.]: Running PID [1012567] of [/home/vlad/kaioken/data/power-characterization-tr_off/centos8/p95/oc0__p95__stresstest-pc191730-r1n8/runApplication.sh]. Waiting for 16s to finishing warm-up at  2022-05-19 18:33:09 +10s.
+2022-05-19 18:33:19|1652981599 [runApplication.]: Running application PID [1012567] of [/home/vlad/kaioken/data/power-characterization-tr_off/centos8/p95/oc0__p95__stresstest-pc191730-r1n8/runApplication.sh]. 
+2022-05-19 18:33:19|1652981599 [runApplication.]: Running /home/vlad/energy-profiler/bin/profiler monitored by PID [1012567]. - time to finish 50.
+2022-05-19 18:33:19|1652981599 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/sleep.1652981599.json -- /home/vlad/energy-profiler-evaluation/sleep/sleep.out 40000 > /home/vlad/profiler-output/sleep.1652981599.csv].
+2022-05-19 18:34:01|1652981641 [runApplication.]: Starting [/home/vlad/energy-profiler/bin/profiler -q --cpu-sensors b -c /home/vlad/profiler-output/main.xml -o /home/vlad/profiler-output/sleep.1652981641.json -- /home/vlad/energy-profiler-evaluation/sleep/sleep.out 40000 > /home/vlad/profiler-output/sleep.1652981641.csv].
+2022-05-19 18:34:03|1652981643 [runApplication.]: is already running with PID [1012567]. Exit [1012681].
+2022-05-19 18:35:03|1652981703 [runApplication.]: script called after the experiment time at 2022-05-19 18:34:09. Exit.
