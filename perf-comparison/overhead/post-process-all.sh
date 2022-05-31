@@ -13,13 +13,13 @@ fi
 args=( $@ )
 if [[ "${#args[@]}" -lt 3 ]]; then
     echoerr "Usage: $0 <prefixes> <intervals> <threads>"
-    echoerr "prefixes, intervals and threads are comma-separated values"
+    echoerr "prefixes, intervals and threads are colon-separated values"
     exit 1
 fi
 
-IFS=',' read -r -a prefixes <<< "${args[0]}"
-IFS=',' read -r -a intervals <<< "${args[1]}"
-IFS=',' read -r -a threads <<< "${args[2]}"
+IFS=':' read -r -a prefixes <<< "${args[0]}"
+IFS=':' read -r -a intervals <<< "${args[1]}"
+IFS=':' read -r -a threads <<< "${args[2]}"
 
 pp_script="$(dirname $0)/post-process.sh"
 

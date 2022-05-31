@@ -18,11 +18,11 @@ fi
 
 if [[ "${args[0]}" = "cpu" ]] && [[ "${#args[@]}" -lt 6 ]]; then
     echoerr "Usage: $0 cpu <prefixes> <intervals> <timeprinter_counts> <sensors> <threads>"
-    echoerr "arguments are semicolon-separated values"
+    echoerr "arguments are colon-separated values"
     exit 1
 elif [[ "${args[0]}" = "gpu" ]] && [[ "${#args[@]}" -lt 5 ]]; then
     echoerr "Usage: $0 gpu <prefixes> <intervals> <timeprinter_counts> <sensors>"
-    echoerr "arguments are semicolon-separated values"
+    echoerr "arguments are colon-separated values"
     exit 1
 fi
 
