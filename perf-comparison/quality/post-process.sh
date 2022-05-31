@@ -12,7 +12,7 @@ fi
 
 args=( $@ )
 if [[ "${#args[@]}" -lt 1 ]]; then
-    echoerr "Usage: $0 <output_dir> [power|energy] [section] <(file_prefix)"
+    echoerr "Usage: echo <file_prefix> | $0 <output_dir> [power|energy] [section]"
     exit 1
 fi
 
@@ -90,3 +90,4 @@ else
         "$file_prefix.0xb.csv" \
         > "$outdir/$file_base.$section.timeprinter.csv"
 fi
+
