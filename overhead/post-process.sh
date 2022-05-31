@@ -80,7 +80,7 @@ results_scripts="$(dirname $0)/../scripts"
 plain_prefix=${args[0]}
 profiled_prefix=${args[1]}
 interval=${args[2]}
-IFS=':' read -r -a timeprinter_count <<< "${args[3]}"
+IFS='-' read -r -a timeprinter_count <<< "${args[3]}"
 sensors=${args[4]}
 
 plain_duration=$(round $(average_count $(get_durations ${timeprinter_count[@]} $plain_prefix.*.csv)) 3)

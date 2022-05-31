@@ -18,19 +18,19 @@ fi
 
 if [[ "${args[0]}" = "cpu" ]] && [[ "${#args[@]}" -lt 6 ]]; then
     echoerr "Usage: $0 cpu <prefixes> <intervals> <timeprinter_counts> <sensors> <threads>"
-    echoerr "arguments are comma-separated values"
+    echoerr "arguments are semicolon-separated values"
     exit 1
 elif [[ "${args[0]}" = "gpu" ]] && [[ "${#args[@]}" -lt 5 ]]; then
     echoerr "Usage: $0 gpu <prefixes> <intervals> <timeprinter_counts> <sensors>"
-    echoerr "arguments are comma-separated values"
+    echoerr "arguments are semicolon-separated values"
     exit 1
 fi
 
 pp_script="$(dirname $0)/post-process.sh"
-IFS=',' read -r -a prefixes <<< "${args[1]}"
-IFS=',' read -r -a intervals <<< "${args[2]}"
-IFS=',' read -r -a counts <<< "${args[3]}"
-IFS=',' read -r -a sensors <<< "${args[4]}"
+IFS=':' read -r -a prefixes <<< "${args[1]}"
+IFS=':' read -r -a intervals <<< "${args[2]}"
+IFS=':' read -r -a counts <<< "${args[3]}"
+IFS=':' read -r -a sensors <<< "${args[4]}"
 
 if [[ "${#prefixes[@]}" -ne "${#counts[@]}" ]]; then
     echoerr "Number of elements in <prefixes> must equal the number of elements of <timeprinter_counts>"
@@ -38,7 +38,7 @@ if [[ "${#prefixes[@]}" -ne "${#counts[@]}" ]]; then
 fi
 
 if [ "${args[0]}" = "cpu" ]; then
-    IFS=',' read -r -a threads <<< "${args[5]}"
+    IFS=':' read -r -a threads <<< "${args[5]}"
     for ix in ${!prefixes[@]}; do
         p=${prefixes[ix]}
         tpc=${counts[ix]}
