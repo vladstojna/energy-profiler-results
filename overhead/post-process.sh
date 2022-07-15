@@ -70,7 +70,7 @@ fi
 
 args=( $@ )
 if [[ "${#args[@]}" -lt 5 ]]; then
-    echoerr "Usage: $0 <plain_prefix> <profiled_prefix> <interval> <timeprinter_start:timeprinter_end> <sensors>"
+    echoerr "Usage: $0 <plain_prefix> <profiled_prefix> <interval> <timeprinter_start-timeprinter_end> <sensors>"
     exit 1
 fi
 
