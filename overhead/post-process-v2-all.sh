@@ -35,18 +35,18 @@ if [ "${args[0]}" = "cpu" ]; then
     for t in ${threads[@]}; do
         for s in ${sensors[@]}; do
             for i in ${intervals[@]}; do
-                mkdir -p "$output_dir/cpu/$t/$s/$i"
+                mkdir -p "$output_dir/cpu/$t/$i"
                 for p in ${prefixes[@]}; do
                     if ls profiled_$t/$i/$(basename $p).$s.*.json > /dev/null; then
                         files2join=( )
                         for file in $(ls profiled_$t/$i/$(basename $p).$s.*.json); do
-                            output_file="$output_dir/cpu/$t/$s/$i/$(basename -s .json $file).csv"
+                            output_file="$output_dir/cpu/$t/$i/$(basename -s .json $file).csv"
                             files2join+=( "$output_file" )
                             $pp_script "$file" "$i" > "$output_file"
                         done
                         $pp_script_join ${files2join[@]} |
                             $pp_script_stats |
-                            column -t -s ',' > "$output_dir/cpu/$t/$s/$i/$(basename $p).$s.stats.txt"
+                            column -t -s ',' > "$output_dir/cpu/$t/$i/$(basename $p).$s.stats.txt"
                     fi
                 done
             done
@@ -55,18 +55,18 @@ if [ "${args[0]}" = "cpu" ]; then
 elif [ "${args[0]}" = "gpu" ]; then
     for s in ${sensors[@]}; do
         for i in ${intervals[@]}; do
-            mkdir -p "$output_dir/gpu/$s/$i"
+            mkdir -p "$output_dir/gpu/$i"
             for p in ${prefixes[@]}; do
                 if ls gpu/$i/$(basename $p).$s.*.json > /dev/null; then
                     files2join=( )
                     for file in $(ls gpu/$i/$(basename $p).$s.*.json); do
-                        output_file="$output_dir/gpu/$s/$i/$(basename -s .json $file).csv"
+                        output_file="$output_dir/gpu/$i/$(basename -s .json $file).csv"
                         files2join+=( "$output_file" )
                         $pp_script "$file" "$i" > "$output_file"
                     done
                     $pp_script_join ${files2join[@]} |
                         $pp_script_stats |
-                        column -t -s ',' > "$output_dir/gpu/$s/$i/$(basename $p).$s.stats.txt"
+                        column -t -s ',' > "$output_dir/gpu/$i/$(basename $p).$s.stats.txt"
                 fi
             done
         done
