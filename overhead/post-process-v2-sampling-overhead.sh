@@ -38,7 +38,7 @@ $scripts/extract_execution.py -s "$section" "$file" |
     awk -F ',' '{print $1 "," $2}' |
     tr -d "\r" |
     paste -d ',' - \
-        <(echo 'sample_time_delta,overhead' && echo '0,0' &&
+        <(echo 'sample_time_delta,overhead' && echo '0,0.0' &&
             $scripts/extract_execution.py -s "$section" "$file" |
             $results_scripts/relative_time.py -c sample_time |
             $results_scripts/csv_field_values.py --field sample_time |
