@@ -175,21 +175,19 @@ def main():
                 if not args.end:
                     writer.writerow(first_data_row)
                     writer.writerow(convert_sample_rows(sample_rows, fieldnames))
-                    sample_rows, next_row = all_rows_of_sample(next_row, csvrdr)
                     while next_row is not None:
-                        writer.writerow(convert_sample_rows(sample_rows, fieldnames))
                         sample_rows, next_row = all_rows_of_sample(next_row, csvrdr)
+                        writer.writerow(convert_sample_rows(sample_rows, fieldnames))
                 else:
                     data = [first_data_row]
                     data.append(
                         [x for x in convert_sample_rows(sample_rows, fieldnames)]
                     )
-                    sample_rows, next_row = all_rows_of_sample(next_row, csvrdr)
                     while next_row is not None:
+                        sample_rows, next_row = all_rows_of_sample(next_row, csvrdr)
                         data.append(
                             [x for x in convert_sample_rows(sample_rows, fieldnames)]
                         )
-                        sample_rows, next_row = all_rows_of_sample(next_row, csvrdr)
                     time_ix = fieldnames["time"][0]
                     last_time = data[-1][time_ix]
                     if last_time > args.end:

@@ -31,6 +31,7 @@ if [ "$results_type" != "power" ] && [ "$results_type" != "energy" ]; then
     exit 1
 fi
 
+mkdir -p "$outdir"
 read -r file_prefix
 first_time=$(head -n 1 "$file_prefix.perf.0xb.csv" | cut -c2-)
 file_base=$(basename "$file_prefix")
