@@ -10,9 +10,9 @@ if [[ -z "$EP_PREFIX" ]]; then
     exit 1
 fi
 
-mkdir -p "$(dirname $0)/../post-processed"
-
 scripts="$EP_PREFIX/scripts"
+outdir="$(dirname $0)/../post-processed/zpic"
+mkdir -p "$outdir"
 
 for f in $(ls $(dirname $0)/*.json); do
     base=$(basename $f)
@@ -22,6 +22,6 @@ for f in $(ls $(dirname $0)/*.json); do
             $scripts/remove_empty.py 2> /dev/null | \
             $scripts/compact_total_energy.py 2> /dev/null | \
             $scripts/compact_reduce_executions.py --op "$op" \
-            > "$(dirname $0)/../post-processed/${no_ext}.${op}.json"
+            > "$outdir/${no_ext}.${op}.json"
     done
 done
